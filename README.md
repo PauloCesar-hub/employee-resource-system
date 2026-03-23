@@ -181,7 +181,6 @@ Separação clara entre camadas (model, service, repository)
 Persistência simples com CSV para facilitar testes
 API HTTP sem frameworks para controle total
 Estrutura preparada para evolução para REST + banco
-💼 Valor para o Mercado
 
 Este projeto demonstra:
 
@@ -191,6 +190,7 @@ Modelagem de domínio
 Arquitetura de software
 Regras de negócio reais
 API HTTP
+
 🧠 Soft Skills técnicas
 Organização de código
 Pensamento sistêmico
@@ -201,6 +201,7 @@ Escalabilidade
 Estágio em desenvolvimento
 Backend Júnior
 Full-stack Júnior
+
 📂 Estrutura do Projeto
 employee-resource-system/
  ┣ src/
@@ -210,15 +211,16 @@ employee-resource-system/
  ┣ docs/
  ┣ README.md
  ┗ .gitignore
+
 🤝 Contribuição
 git checkout -b feature/nova-feature
 git commit -m "feat: nova funcionalidade"
 git push origin feature/nova-feature
+
 👨‍💻 Autor
 
 Paulo Cesar de Govea
 
 🎓 Engenharia de Software - FIAP
 💻 Desenvolvedor Full-Stack
-
 🔗 https://github.com/PauloCesar-hub
