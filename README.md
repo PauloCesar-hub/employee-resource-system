@@ -1,115 +1,224 @@
-# 🚀 ERS — Employee Resource System
+# 🏢 Employee Resource System (ERS)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Java-17+-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Arquitetura-Camadas-blue?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/API-HTTP%20Nativa-green?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Persist%C3%AAncia-CSV-orange?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Interface-Web-lightgrey?style=for-the-badge"/>
-</p>
+![Java](https://img.shields.io/badge/Java-17+-orange)
+![Status](https://img.shields.io/badge/status-ativo-success)
+![Architecture](https://img.shields.io/badge/architecture-camada-blue)
+![Data](https://img.shields.io/badge/storage-CSV-lightgrey)
 
-## 📌 Visão Geral
+> Sistema corporativo completo para gestão de colaboradores e recursos internos, com regras de negócio reais, persistência de dados e interface web.
 
-O **ERS (Employee Resource System)** é um sistema em Java para gestão de colaboradores, recursos internos e alocações corporativas.
+---
 
-Nesta versão, o projeto foi evoluído para um nível muito mais completo, com:
+## 📸 Demonstração
 
-- arquitetura em camadas
-- autenticação simples por perfil
-- IDs automáticos
-- persistência em CSV
-- logs do sistema
-- relatórios e filtros
-- API HTTP nativa
-- interface web simples
+### 💻 Tela Principal 
+![Dashboard](p1.png)
 
-## ✅ Melhorias implementadas
+### 🔐 Controle de Permissões
+![Permissoes](p4.png)
 
-### Nível 1
-- Arquitetura separada em `model`, `repository`, `service`, `api`, `util`
-- IDs automáticos para colaboradores, recursos e alocações
-- Menu de console mais completo
+### 📊 Gestão de Colaboradores
+![Recursos](p2.png)
+
+### 🔄 Alocações
+![Alocações](p3.png)
+
+### 📊 Gestão de Recursos 
+![Recursos](p5.png)
+
+
+---
+
+## 📌 Sobre o Projeto
+
+O **Employee Resource System (ERS)** é um sistema backend + interface web que simula um ambiente corporativo real para gestão de ativos e colaboradores.
+
+Ele permite:
+
+- Controle de colaboradores
+- Gestão de recursos internos
+- Alocação de recursos
+- Validação de regras de negócio
+- Controle de permissões por perfil
+- Persistência de dados
+- Monitoramento por logs
+
+---
+
+## 🎯 Problema Resolvido
+
+Empresas frequentemente enfrentam:
+
+- Falta de controle sobre ativos internos
+- Uso indevido de recursos de alto valor
+- Ausência de rastreabilidade
+- Sistemas descentralizados
+
+💡 O ERS resolve isso com:
+
+- Centralização das informações
+- Regras automatizadas de validação
+- Controle por perfis de acesso
+- Histórico completo de ações
+
+---
+
+## 🧩 Funcionalidades
+
+### 👥 Colaboradores
+- Cadastro de colaboradores
+- Ativação e desativação
 - Busca por nome
+- Histórico de eventos
 
-### Nível 2
-- Persistência em arquivos CSV na pasta `data/`
-- Logs em `data/logs.txt`
-- Histórico de eventos em colaboradores e recursos
+### 📦 Recursos
+- Cadastro de recursos
+- Controle de disponibilidade
+- Classificação por valor
+- Histórico de uso
 
-### Nível 3
+### 🔄 Alocação
+- Associação de recursos a colaboradores
+- Controle de disponibilidade
+- Validação automática
+
+### 🔐 Permissões
 - Login com perfis:
-  - `admin / 123`
-  - `user / 123`
-- Relatórios:
-  - custo total por colaborador
-  - recursos mais caros
-  - colaboradores sem recursos
-- Filtros:
-  - colaboradores ativos
-  - recursos disponíveis
+  - `admin`
+  - `user`
+- Controle de acesso por role
+- Restrição para ações críticas
 
-### Nível 4
-- API HTTP local com endpoints:
-  - `GET /api/colaboradores`
-  - `POST /api/colaboradores`
-  - `GET /api/recursos`
-  - `POST /api/recursos`
-  - `GET /api/alocacoes`
-  - `POST /api/alocar`
-- Interface web em `http://localhost:8080`
+### 📊 Sistema
+- Persistência em CSV
+- Logs de operações
+- Filtros de dados
+- Relatórios gerenciais
 
-## 🗂 Estrutura do projeto
+### 🌐 API HTTP
+- Endpoints REST locais:
+  - `GET /colaboradores`
+  - `POST /colaboradores`
+  - `GET /recursos`
+  - `POST /recursos`
+  - `GET /alocacoes`
+  - `POST /alocacoes`
 
-```text
-src/br/com/ers/
-├── api/
-├── model/
-├── persistence/
-├── repository/
-├── service/
-├── util/
-└── Main.java
-```
+### 💻 Interface Web
+- Interface local para interação com o sistema
+- Integração com backend
 
-## ▶️ Como executar
+---
 
-### Console
-
-```bash
-javac -d out $(find src -name "*.java")
-java -cp out br.com.ers.Main
-```
-
-### API + Web
-
-1. Execute o projeto normalmente.
-2. No menu, escolha a opção **17 - Iniciar API + interface web**.
-3. Abra no navegador:
+## 🏗️ Arquitetura
 
 ```text
-http://localhost:8080
-```
+📁 src/br/com/ers
+ ┣ 📂 model        → Entidades (Colaborador, Recurso, Alocacao)
+ ┣ 📂 repository   → Persistência (CSV)
+ ┣ 📂 service      → Regras de negócio
+ ┣ 📂 api          → API HTTP
+ ┗ 📂 util         → Utilitários (logs, helpers)
 
-## 🔐 Login padrão
+📁 Outras pastas:
 
-- **Administrador:** `admin / 123`
-- **Usuário comum:** `user / 123`
+📁 data           → Arquivos CSV
+📁 web            → Interface web
+📁 ers-frontend   → Frontend adicional
+⚙️ Tecnologias
+☕ Java (POO)
+📂 CSV (persistência)
+🌐 HTTP Server nativo
+🎨 HTML, CSS, JavaScript
+🧠 Arquitetura em camadas
+▶️ Como Executar
+git clone https://github.com/PauloCesar-hub/employee-resource-system.git
+cd employee-resource-system
+Executar backend
 
-## 🧪 Dados persistidos
+Abra na IDE (IntelliJ) e execute a classe principal.
 
-Os dados são salvos automaticamente na pasta `data/`:
+Acessar frontend
 
-- `colaboradores.csv`
-- `recursos.csv`
-- `alocacoes.csv`
-- `logs.txt`
+Abra os arquivos da pasta web/ no navegador.
 
-## 👨‍💻 Autores
+🔑 Acesso ao Sistema
+Admin:
+login: admin
+senha: 123
 
-| Nome | RM |
-|------|----|
-| Paulo Cesar de Govea Junior | RM566034 |
-| Guilherme Vilela Perez | RM564422 |
-| Gustavo Panham Dourado | RM563904 |
-| Christian Schunck de Almeida | RM563850 |
-| Thomas Jeferson Santana Wang | RM565104 |
+User:
+login: user
+senha: 123
+
+📊 Roadmap
+
+✅ Já implementado
+ Arquitetura em camadas
+ CRUD de colaboradores
+ CRUD de recursos
+ Controle de alocações
+ IDs automáticos
+ Persistência em CSV
+ Logs do sistema
+ Histórico de eventos
+ Login com roles (admin/user)
+ Controle de permissões
+ API HTTP local
+ Interface web
+ Filtros e relatórios
+Dashboard com gráficos
+
+🚧 Próximas evoluções
+ Melhorias visuais no frontend
+ Testes automatizados
+ Banco de dados (MySQL/PostgreSQL)
+ Autenticação avançada (JWT)
+ Deploy em nuvem
+
+🧠 Decisões Técnicas
+Separação clara entre camadas (model, service, repository)
+Persistência simples com CSV para facilitar testes
+API HTTP sem frameworks para controle total
+Estrutura preparada para evolução para REST + banco
+💼 Valor para o Mercado
+
+Este projeto demonstra:
+
+🔥 Hard Skills
+Backend Java
+Modelagem de domínio
+Arquitetura de software
+Regras de negócio reais
+API HTTP
+🧠 Soft Skills técnicas
+Organização de código
+Pensamento sistêmico
+Escalabilidade
+
+👉 Projeto ideal para vagas de:
+
+Estágio em desenvolvimento
+Backend Júnior
+Full-stack Júnior
+📂 Estrutura do Projeto
+employee-resource-system/
+ ┣ src/
+ ┣ data/
+ ┣ web/
+ ┣ ers-frontend/
+ ┣ docs/
+ ┣ README.md
+ ┗ .gitignore
+🤝 Contribuição
+git checkout -b feature/nova-feature
+git commit -m "feat: nova funcionalidade"
+git push origin feature/nova-feature
+👨‍💻 Autor
+
+Paulo Cesar de Govea
+
+🎓 Engenharia de Software - FIAP
+💻 Desenvolvedor Full-Stack
+
+🔗 https://github.com/PauloCesar-hub
