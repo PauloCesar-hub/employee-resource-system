@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ERS Web</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 1000px; margin: 24px auto; padding: 0 16px; background:#f7f7f7; }
+    h1 { margin-bottom: 8px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:16px; }
+    .card { background:#fff; border-radius:12px; padding:16px; box-shadow:0 2px 10px rgba(0,0,0,.08); }
+    input, button { width:100%; margin-top:8px; padding:10px; border-radius:8px; border:1px solid #ccc; }
+    button { cursor:pointer; background:#1f7a4d; color:#fff; border:none; }
+    pre { white-space:pre-wrap; background:#111; color:#eee; padding:12px; border-radius:8px; min-height:160px; }
+  </style>
+</head>
+<body>
+  <h1>ERS - Painel Web</h1>
+  <p>Interface web simples para listar e cadastrar dados do sistema.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Novo colaborador</h3>
+      <input id="cnome" placeholder="Nome" />
+      <input id="ccargo" placeholder="Cargo" />
+      <input id="csalario" placeholder="Salário" />
+      <input id="cdata" placeholder="Data AAAA-MM-DD" />
+      <button onclick="criarColaborador()">Cadastrar</button>
+    </div>
+    <div class="card">
+      <h3>Novo recurso</h3>
+      <input id="rnome" placeholder="Nome" />
+      <input id="rcategoria" placeholder="Categoria" />
+      <input id="rvalor" placeholder="Valor" />
+      <button onclick="criarRecurso()">Cadastrar</button>
+    </div>
+    <div class="card">
+      <h3>Nova alocação</h3>
+      <input id="acolaborador" placeholder="ID colaborador" />
+      <input id="arecurso" placeholder="ID recurso" />
+      <label style="display:flex; gap:8px; align-items:center; margin-top:8px; font-size:14px;">
+        <input id="aautorizado" type="checkbox" style="width:auto; margin:0;" />
+        Autorizar alocação especial para recurso de alto valor
+      </label>
+      <button onclick="alocar()">Alocar</button>
+    </div>
+    <div class="card">
+      <h3>Ativar / desativar colaborador</h3>
+      <input id="sid" placeholder="ID do colaborador" />
+      <button onclick="alterarStatusColaborador(true)">Ativar</button>
+      <button onclick="alterarStatusColaborador(false)" style="background:#b42318; margin-top:8px;">Desativar</button>
+    </div>
+    <div class="card">
+      <h3>Devolver recurso</h3>
+      <input id="drecurso" placeholder="ID do recurso" />
+      <button onclick="devolverRecurso()" style="background:#a16207;">Devolver</button>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:16px;">
+    <div class="card"><h3>Colaboradores</h3><button onclick="listar('/api/colaboradores')">Atualizar</button><pre id="colaboradores"></pre></div>
+    <div class="card"><h3>Recursos</h3><button onclick="listar('/api/recursos')">Atualizar</button><pre id="recursos"></pre></div>
+    <div class="card"><h3>Alocações</h3><button onclick="listar('/api/alocacoes')">Atualizar</button><pre id="alocacoes"></pre></div>
+  </div>
+
+  <script>
+    async function listar(url) {
+      const data = await fetch(url).then(r => r.json());
+      document.getElementById(url.split('/').pop()).textContent = JSON.stringify(data, null, 2);
+    }
+    async function criarColaborador() {
+      const body = new URLSearchParams({
+        nome: document.getElementById('cnome').value,
+        cargo: document.getElementById('ccargo').value,
+        salario: document.getElementById('csalario').value,
+        data: document.getElementById('cdata').value
+      });
+      await fetch('/api/colaboradores', { method:'POST', body });
+      listar('/api/colaboradores');
+    }
+    async function criarRecurso() {
+      const body = new URLSearchParams({
+        nome: document.getElementById('rnome').value,
+        categoria: document.getElementById('rcategoria').value,
+        valor: document.getElementById('rvalor').value
+      });
+      await fetch('/api/recursos', { method:'POST', body });
+      listar('/api/recursos');
+    }
+    async function alterarStatusColaborador(ativo) {
+      const body = new URLSearchParams({
+        id: document.getElementById('sid').value,
+        ativo: String(ativo)
+      });
+      const response = await fetch('/api/colaboradores/status', { method:'POST', body });
+      const data = await response.json();
+      if (!response.ok || data.status === 'error') {
+        alert(data.message || 'Erro ao alterar status do colaborador');
+        return;
+      }
+      listar('/api/colaboradores');
+    }
+    async function devolverRecurso() {
+      const body = new URLSearchParams({
+        recursoId: document.getElementById('drecurso').value,
+        observacao: 'Devolução via interface web'
+      });
+      const response = await fetch('/api/devolver', { method:'POST', body });
+      const data = await response.json();
+      if (!response.ok || data.status === 'error') {
+        alert(data.message || 'Erro ao devolver recurso');
+        return;
+      }
+      listar('/api/alocacoes');
+      listar('/api/recursos');
+    }
+    async function alocar() {
+      const body = new URLSearchParams({
+        colaboradorId: document.getElementById('acolaborador').value,
+        recursoId: document.getElementById('arecurso').value,
+        observacao: 'Alocação via interface web',
+        autorizado: document.getElementById('aautorizado').checked
+      });
+      const response = await fetch('/api/alocar', { method:'POST', body });
+      const data = await response.json();
+      if (!response.ok || data.status === 'error') {
+        alert(data.message || 'Erro ao alocar recurso');
+        return;
+      }
+      listar('/api/alocacoes');
+      listar('/api/recursos');
+    }
+    listar('/api/colaboradores'); listar('/api/recursos'); listar('/api/alocacoes');
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+2026-03-18T12:23:03.738386895 [INFO] Colaborador cadastrado: Ana Souza (id=1)
+2026-03-18T12:23:03.790810954 [INFO] Colaborador cadastrado: Bruno Lima (id=2)
+2026-03-18T12:23:03.791498924 [INFO] Colaborador cadastrado: Gustavo Panham (id=3)
+2026-03-18T12:23:03.801109891 [INFO] Recurso cadastrado: MacBook Pro M5 (id=1)
+2026-03-18T12:23:03.801509765 [INFO] Recurso cadastrado: Dell Latitude i7 (id=2)
+2026-03-18T12:23:03.801831916 [INFO] Recurso cadastrado: Cadeira Ergonomica (id=3)
+2026-03-18T12:23:03.802311551 [INFO] Recurso cadastrado: Fone JBL (id=4)
+2026-03-18T12:23:03.816731091 [INFO] Login realizado por admin com perfil ADMIN
+2026-03-18T12:23:34.095926874 [INFO] Login realizado por admin com perfil ADMIN
+2026-03-18T12:23:34.133217908 [INFO] API iniciada em http://localhost:8081
+2026-03-18T12:24:15.995804119 [INFO] Login realizado por admin com perfil ADMIN
+2026-03-18T12:24:16.035481184 [INFO] API iniciada em http://localhost:8081
+2026-03-18T22:46:20.237042 [INFO] Login realizado por admin com perfil ADMIN
+2026-03-18T22:46:21.474819 [INFO] API iniciada em http://localhost:8080
+2026-03-18T22:46:45.433404 [INFO] Login realizado por admin com perfil ADMIN
+2026-03-18T22:46:49.257845 [INFO] Colaborador desativado: Ana Souza (id=1)
+2026-03-18T22:46:50.158058 [INFO] Colaborador ativado: Ana Souza (id=1)
+2026-03-18T22:46:58.398917 [INFO] Login realizado por user com perfil USER
+2026-03-18T22:47:09.930689 [INFO] Login realizado por admin com perfil ADMIN
+2026-03-18T22:50:30.047784 [INFO] Login realizado por admin com perfil ADMIN
+2026-03-18T22:50:31.140859 [INFO] API iniciada em http://localhost:8080
+2026-03-18T22:54:10.724617 [INFO] Colaborador cadastrado: Beatriz tatakami leite  (id=4)
+2026-03-19T11:44:00.804248 [INFO] Login realizado por admin com perfil ADMIN
+2026-03-19T11:44:02.407703 [INFO] API iniciada em http://localhost:8080
+2026-03-21T23:24:31.616359 [INFO] Login realizado por admin com perfil ADMIN
+2026-03-21T23:24:32.828191 [INFO] API iniciada em http://localhost:8080
