@@ -21,11 +21,13 @@
 ![Recursos](p2.png)
 
 ### 🔄 Alocações
-![Alocações](p3.png)
+![Alocações](p6.png)
 
 ### 📊 Gestão de Recursos 
 ![Recursos](p5.png)
 
+### 🧾 Relatórios
+![Reslatórios](p3.png) 
 
 ---
 
